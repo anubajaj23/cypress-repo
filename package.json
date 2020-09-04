@@ -1,5 +1,5 @@
 {
-  "name": "cypress-scaffold",
+  "name": "cypress-percy",
   "version": "1.0.0",
   "description": "basic structure of cypress testing framework",
   "main": "index.js",
@@ -10,20 +10,20 @@
     "functional": "cypress run -e configFile=$npm_config_server,brand=$npm_config_brand,username=$npm_config_username,password=$npm_config_password --spec 'cypress/integration/publisher/**/*'",
     "clean:reports": "rm -R -f cypress/reports && mkdir cypress/reports && mkdir cypress/reports/mochareports",
     "pretest": "npm run clean:reports",
-    "script-record": "cypress run --record --key 724e0985-b9a3-4829-ad0e-2c1d500c10ed -e configFile=$npm_config_server,brand=$npm_config_brand,username=$npm_config_username,password=$npm_config_password",
-    "script-parallel": "cypress run --record --key 724e0985-b9a3-4829-ad0e-2c1d500c10ed --parallel -e configFile=$npm_config_server,brand=$npm_config_brand,username=$npm_config_username,password=$npm_config_password",
+    "record": "cypress run --record --key 06b1d9fc-5d64-47f7-9596-1337458299d2 -e configFile=$npm_config_server,brand=$npm_config_brand,username=$npm_config_username,password=$npm_config_password",
+    "parallel": "cypress run --record --key 06b1d9fc-5d64-47f7-9596-1337458299d2 --parallel -e configFile=$npm_config_server,brand=$npm_config_brand,username=$npm_config_username,password=$npm_config_password",
     "combine-reports": "mochawesome-merge cypress/reports/mocha/*.json > cypress/reports/mochareports/report.json",
     "generate-report": "marge cypress/reports/mochareports/report.json -f report -o cypress/reports/mochareports",
     "posttest": "npm run combine-reports && npm run generate-report configFile=$npm_config_server,brand=$npm_config_brand,username=$npm_config_username,password=$npm_config_password",
     "test": "npm run -s start-headless || npm run posttest",
-    "test-record": "npm run -s script-record || npm run posttest",
-    "test-parallel": "npm run -s script-parallel || npm run posttest",
+    "test-record": "npm run -s record || npm run posttest",
+    "test-parallel": "npm run -s parallel || npm run posttest",
     "format": "prettier --write \"**/*.+(js|jsx|json|css|md)\"",
     "lint": "tslint -c tslint.json -p . -t stylish cypress/**/*.ts"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/anandsharma45/cypress-scaffold.git"
+    "url": "git+https://github.com/anubajaj23/cypress-repo"
   },
   "keywords": [
     "cypress"
@@ -31,9 +31,9 @@
   "author": "anu.bajaj@akqa.com",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/anandsharma45/cypress-scaffold/issues"
+    "url": "https://github.com/anubajaj23/cypress-repo/issues"
   },
-  "homepage": "https://github.com/anandsharma45/cypress-scaffold#readme",
+  "homepage": "https://github.com/anubajaj23/cypress-repo#readme",
   "devDependencies": {
     "@types/mocha": "^8.0.2",
     "cypress": "^4.11.0",

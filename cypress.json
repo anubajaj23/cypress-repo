@@ -3,7 +3,7 @@
    "viewportHeight": 768,
    "video": false,
    "responseTimeout": 10000,
-   "projectId": "deoq11",
+   "projectId": "zvtjq4",
    "reporter": "cypress-multi-reporters",
    "reporterOptions": {
       "reporterEnabled": "mochawesome",
