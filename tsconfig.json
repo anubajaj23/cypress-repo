@@ -1,0 +1,25 @@
+{
+  "compilerOptions": {
+    "outDir": "build/dist",
+    "module": "esnext",
+    "target": "es5",
+    "lib": ["es6", "es7", "dom"],
+    "sourceMap": true,
+    "allowJs": true,
+    "moduleResolution": "node",
+    "forceConsistentCasingInFileNames": true,
+    "noImplicitReturns": true,
+    "strict": true,
+    "strictFunctionTypes": true,
+    "suppressImplicitAnyIndexErrors": true,
+    "noUnusedLocals": true,
+    "pretty": true,
+    "types": ["cypress"],
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "downlevelIteration": true,
+    "baseUrl": "../node_modules",
+    "resolveJsonModule": true
+  },
+  "include": ["**/*.ts", "./node_modules/cypress", "cypress/**/*.ts"]
+}

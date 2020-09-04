@@ -1,39 +1,54 @@
 {
-	"name": "nr-cypress",
-	"version": "1.0.0",
-	"description": "This contains Applitools Cypress",
-	"main": "index.js",
-	"scripts": {
-		"coverage": "cypress run",
-		"cy:open": "cypress open",
-		"cy:run": "cypress run",
-		"precy:run": "rm -rf .nyc_output || true",
-		"start": "./node_modules/cypress/bin/cypress open",
-		"format": "prettier --write \"**/*.+(js|jsx|json|css|md)\"",
-		"precommit": "npm run lint",
-		"lint": "eslint *.js",
-		"lint:json": "eslint --ext .json cypress",
-		"clean": "rm -rf build .nyc_output || true",
-		"report:coverage": "nyc report --reporter=html"
-	},
-	"author": "",
-	"license": "ISC",
-	"devDependencies": {
-		"@applitools/eyes.cypress": "^3.4.11",
-		"@cypress/eslint-plugin-dev": "^5.0.0",
-		"@cypress/fiddle": "^1.18.2",
-		"axe-core": "^3.5.3",
-		"cypress": "^4.7.0",
-		"cypress-axe": "^0.8.1",
-		"eslint": "^7.1.0",
-		"eslint-plugin-cypress": "^2.10.3",
-		"eslint-plugin-json-format": "^2.0.1",
-		"eslint-plugin-mocha": "^7.0.0",
-		"istanbul-lib-coverage": "^3.0.0",
-		"nyc": "^15.0.1"
-	},
-	"dependencies": {
-		"cypress-lighthouse": "^0.1.0",
-		"prettier": "^2.0.5"
-	}
+  "name": "cypress-scaffold",
+  "version": "1.0.0",
+  "description": "basic structure of cypress testing framework",
+  "main": "index.js",
+  "scripts": {
+    "start": "cypress open -e configFile=$npm_config_server,brand=$npm_config_brand,username=$npm_config_username,password=$npm_config_password",
+    "start-headless": "cypress run -e configFile=$npm_config_server,brand=$npm_config_brand,username=$npm_config_username,password=$npm_config_password",
+    "author": "cypress run -e configFile=$npm_config_server,brand=$npm_config_brand,username=$npm_config_username,password=$npm_config_password --spec 'cypress/integration/author/**/*'",
+    "functional": "cypress run -e configFile=$npm_config_server,brand=$npm_config_brand,username=$npm_config_username,password=$npm_config_password --spec 'cypress/integration/publisher/**/*'",
+    "clean:reports": "rm -R -f cypress/reports && mkdir cypress/reports && mkdir cypress/reports/mochareports",
+    "pretest": "npm run clean:reports",
+    "script-record": "cypress run --record --key 724e0985-b9a3-4829-ad0e-2c1d500c10ed -e configFile=$npm_config_server,brand=$npm_config_brand,username=$npm_config_username,password=$npm_config_password",
+    "script-parallel": "cypress run --record --key 724e0985-b9a3-4829-ad0e-2c1d500c10ed --parallel -e configFile=$npm_config_server,brand=$npm_config_brand,username=$npm_config_username,password=$npm_config_password",
+    "combine-reports": "mochawesome-merge cypress/reports/mocha/*.json > cypress/reports/mochareports/report.json",
+    "generate-report": "marge cypress/reports/mochareports/report.json -f report -o cypress/reports/mochareports",
+    "posttest": "npm run combine-reports && npm run generate-report configFile=$npm_config_server,brand=$npm_config_brand,username=$npm_config_username,password=$npm_config_password",
+    "test": "npm run -s start-headless || npm run posttest",
+    "test-record": "npm run -s script-record || npm run posttest",
+    "test-parallel": "npm run -s script-parallel || npm run posttest",
+    "format": "prettier --write \"**/*.+(js|jsx|json|css|md)\"",
+    "lint": "tslint -c tslint.json -p . -t stylish cypress/**/*.ts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/anandsharma45/cypress-scaffold.git"
+  },
+  "keywords": [
+    "cypress"
+  ],
+  "author": "anand.sharma@akqa.com",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/anandsharma45/cypress-scaffold/issues"
+  },
+  "homepage": "https://github.com/anandsharma45/cypress-scaffold#readme",
+  "devDependencies": {
+    "@types/mocha": "^8.0.2",
+    "cypress": "^4.11.0",
+    "cypress-axe": "^0.8.1",
+    "cypress-dotenv": "^1.2.2",
+    "cypress-lighthouse": "^0.1.0",
+    "cypress-multi-reporters": "^1.4.0",
+    "dotenv": "^8.2.0",
+    "mocha": "^8.1.1",
+    "mochawesome": "^6.1.1",
+    "mochawesome-merge": "^4.1.0",
+    "mochawesome-report-generator": "^5.1.0",
+    "prettier": "^2.0.5",
+    "tslint": "^6.1.3",
+    "tslint-plugin-cypress": "^1.0.4",
+    "typescript": "^3.9.7"
+  }
 }

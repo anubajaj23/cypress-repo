@@ -1,6 +1,21 @@
 {
-	"viewportWidth": 1024,
-	"viewportHeight": 768,
-	"video": false,
-	"responseTimeout": 10000
+   "viewportWidth": 1024,
+   "viewportHeight": 768,
+   "video": false,
+   "responseTimeout": 10000,
+   "projectId": "deoq11",
+   "reporter": "cypress-multi-reporters",
+   "reporterOptions": {
+      "reporterEnabled": "mochawesome",
+      "mochawesomeReporterOptions": {
+      "reportDir": "cypress/reports/mocha",
+         "quite": true,
+         "overwrite": false,
+         "html": false,
+         "json": true
+      }
+   },
+   "env" : {
+      "brand": "bp"
+   }
 }
