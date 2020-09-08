@@ -11,9 +11,14 @@
 // This function is called when a project is opened or re-opened (e.g. due to
 // the project's config changing)
 // cypress-dotenv is used for managing multiple environement files with '.'
+// initialize percyHealthCheck task
+
+let percyHealthCheck = require('@percy/cypress/task')
 
 const dotenvPlugin = require('cypress-dotenv')
+
 module.exports = (on, config) => {
+  on("task", percyHealthCheck);
   config = dotenvPlugin(config)
   return config
 }

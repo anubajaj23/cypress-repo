@@ -19,12 +19,8 @@ context('Gallery Component Author Dialog', () => {
          cy.get(selectors.dropZone).click()
            .get(selectors.TOOLBAR.insertComponent).click()
            .get(`${selectors.componentListUrl}${galleryDataPath}`).click({force : true})
-         cy.screenshot('Gallery component added')
-      })
+         cy.percySnapshot('Gallery component added')
 
-      cy.reload()
-
-      cy.wait('@components').then(() => {
          cy.get(`div${galleryDropZone}`).should('be.visible').click({ force: true })
            .get(selectors.TOOLBAR.configureButton).click()
             
@@ -48,17 +44,13 @@ context('Gallery Component Author Dialog', () => {
                   .should('be.visible')
                   .should('value', galleryData.loadMore)
                   .then(() => {
-                     cy.screenshot('Gallery component with values')
+                     cy.percySnapshot('Gallery component with values')
                         .get(selectors.MODAL.cancelDialog).click({ force: true })
-                  })
-               })
-               cy.reload()
-               cy.wait('@components').then(() => {
+                  })              
                   cy.get(`div${galleryDropZone}`).should('be.visible').click({ force: true })
-                    .get(selectors.TOOLBAR.removeComponent).click()
-                    .get(selectors.MODAL.deleteComponentButton).click({force: true, multiple: true})
+                    .get(selectors.TOOLBAR.removeComponent).click({force:true})
+                    .get(selectors.MODAL.deleteComponentButton).click({force: true})
                })
-               cy.reload()
       })
    })
 
@@ -67,30 +59,21 @@ context('Gallery Component Author Dialog', () => {
          cy.get(selectors.dropZone).click()
            .get(selectors.TOOLBAR.insertComponent, { timeout: 100 }).click()
            .get(`${selectors.componentListUrl}${layoutDataPath}`).click({force : true})
-      })
 
-      cy.reload()
-      cy.wait('@components').then(() => {
          cy.get(`div${layoutDropZone}`).should('be.visible').click({ force: true })
-           .get(selectors.dropZoneLayout).click()
-           .get(selectors.TOOLBAR.insertComponent, { timeout: 100 }).click()
-           .get(`${selectors.componentListUrl}${galleryDataPath}`).click({force : true})
-         cy.screenshot('Gallery component added with Layout Container')
-      })
-      cy.reload()
+            .get(selectors.dropZoneLayout).click({force:true})
+            .get(selectors.TOOLBAR.insertComponent, { timeout: 100 }).click()
+            .get(`${selectors.componentListUrl}${galleryDataPath}`).click({force : true})
 
-      cy.wait('@components').then(() => {
+      cy.percySnapshot('Gallery component added with Layout Container')
+
          cy.get(`div${galleryInLayoutDropZone}`).should('be.visible').click({ force: true })
-           .get(selectors.TOOLBAR.removeComponent).click()
-         cy.get(selectors.MODAL.deleteComponentButton).click({force: true, multiple: true})
-      })
-      cy.reload()
-      
-      cy.wait('@components').then(() => {
+            .get(selectors.TOOLBAR.removeComponent).click()
+         cy.get(selectors.MODAL.deleteComponentButton).click({force: true})
+
          cy.get(`div${layoutDropZone}`).should('be.visible').click({force: true})
             .get(selectors.TOOLBAR.removeComponent).click()
-            .get(selectors.MODAL.deleteComponentButton).click({force: true, multiple: true})
+            .get(selectors.MODAL.deleteComponentButton).click({force: true})
       })
-      cy.reload()
    })
 })

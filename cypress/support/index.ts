@@ -17,6 +17,6 @@
 import './commands'
 import 'cypress-axe'
 import '../utils/author/auth.page.util'
-
+import '@percy/cypress'
 // Alternatively you can use CommonJS syntax:
 // require('./commands')

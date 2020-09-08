@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "cypress open -e configFile=$npm_config_server,brand=$npm_config_brand,username=$npm_config_username,password=$npm_config_password",
-    "start-headless": "cypress run -e configFile=$npm_config_server,brand=$npm_config_brand,username=$npm_config_username,password=$npm_config_password",
+    "start-headless": "percy exec -- cypress run -e configFile=$npm_config_server,brand=$npm_config_brand,username=$npm_config_username,password=$npm_config_password",
     "author": "cypress run -e configFile=$npm_config_server,brand=$npm_config_brand,username=$npm_config_username,password=$npm_config_password --spec 'cypress/integration/author/**/*'",
     "functional": "cypress run -e configFile=$npm_config_server,brand=$npm_config_brand,username=$npm_config_username,password=$npm_config_password --spec 'cypress/integration/publisher/**/*'",
     "clean:reports": "rm -R -f cypress/reports && mkdir cypress/reports && mkdir cypress/reports/mochareports",
@@ -35,6 +35,7 @@
   },
   "homepage": "https://github.com/anubajaj23/cypress-repo#readme",
   "devDependencies": {
+    "@percy/cypress": "^2.3.1",
     "@types/mocha": "^8.0.2",
     "cypress": "^4.11.0",
     "cypress-axe": "^0.8.1",

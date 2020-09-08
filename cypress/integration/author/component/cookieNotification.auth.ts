@@ -37,7 +37,7 @@ context('Cookie Component Author Dialog', () => {
             .get('[name="./cookieNotificationSecondaryTitle"]')
             .should('have.value', cNData.cookieNotificationSecondaryTitle)
             .then(() => {
-              cy.screenshot('Open Cookie dialog and verify elements with prefilled values')
+              cy.percySnapshot('Open Cookie dialog and verify elements with prefilled values')
                 .get(selectors.MODAL.cancelDialog).click({ force: true })
             })
         })
@@ -71,7 +71,7 @@ context('Cookie Component Author Dialog', () => {
         .should('have.attr', 'value', '') 
         .get(selectors.MODAL.submitDialog).click({ force: true })
         .then(() => {
-          cy.screenshot('Check empty values')
+          cy.percySnapshot('Check empty values')
         })
     })
   })
@@ -91,7 +91,7 @@ context('Cookie Component Author Dialog', () => {
 
         .get(selectors.MODAL.submitDialog).click({ force: true })
         .then(() => {
-          cy.screenshot('Check Special symbols characters')
+          cy.percySnapshot('Check Special symbols characters')
         })
     })
   })

@@ -14,7 +14,7 @@
     "suppressImplicitAnyIndexErrors": true,
     "noUnusedLocals": true,
     "pretty": true,
-    "types": ["cypress"],
+    "types": ["cypress","@percy/cypress"],
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
     "downlevelIteration": true,

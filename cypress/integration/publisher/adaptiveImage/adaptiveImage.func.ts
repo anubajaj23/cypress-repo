@@ -14,26 +14,26 @@ context('Adaptive Image', () => {
    })
 
    it('Visits the site for the first time', () => {
-      cy.get(SELECTORS.adaptiveImg)
-         .should('be.visible')
-         .trigger('mouseover')
+      cy.get(SELECTORS.adaptiveImg).eq(0).should('be.visible')
+      cy.percySnapshot('Adaptive Image is visible');
    })
 
-   it('Check if fullscreen works fine', () => {
-      cy.get(SELECTORS.adaptiveImgBtn)
-         .should('be.visible').click()
-      cy.get(SELECTORS.overlay).find(SELECTORS.overlayImg).should('be.visible')
+   it('Check if hover effect works fine', () => {
+      cy.get(SELECTORS.adaptiveImg).eq(0).should('have.attr','title','With hover effect').click()
+      cy.percySnapshot('Hover effect is working fine')
    })
 
-   it('Close full screen works fine', () => {
-      cy.get(SELECTORS.overlayClose)
-         .should('be.visible').click()
-      cy.get(SELECTORS.overlayClose).find(SELECTORS.overlayImg).should('be.visible')
+   it('Check if open/close fullscreen works fine', () => {
+      cy.get(SELECTORS.adaptiveImgBtn).eq(0).should('be.visible').click()
+        .get(SELECTORS.overlay).find(SELECTORS.overlayImg).should('be.visible')
+      cy.percySnapshot('Overlay is visible')
+        .get(SELECTORS.overlayClose).should('be.visible').click()
+        .get(SELECTORS.adaptiveImg).eq(0).should('be.visible')
+      cy.percySnapshot('overlay close is working fine')
    })
 
    it('Hover effect doesnt appear when it is switched off', () => {
-      cy.get(SELECTORS.overlayClose)
-         .should('be.visible').click()
-      cy.get(SELECTORS.overlay).find(SELECTORS.overlayImg).should('be.visible')
+      cy.get(SELECTORS.adaptiveImg).eq(1).should('have.attr','title','Without hover effect').click()
+      cy.percySnapshot('hover effect with switchoff')
    })
 })
